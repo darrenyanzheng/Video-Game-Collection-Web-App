@@ -13,7 +13,6 @@
 </a>
 
 
-<a href="add-Servlet">yep</a>
 <a href="hello-servlet">Hello Servlet</a>
 </body>
 </html>

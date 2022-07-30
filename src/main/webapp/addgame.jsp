@@ -11,9 +11,9 @@
     <title>Add a Game</title>
 </head>
 <body>
-    <form>
+    <form method = "post" action = "add-Servlet">
         <label for = "name"> Name: </label>
-        <input type = "text" id = "name" required>
+        <input type = "text" id = "name" required name = "name">
         <br>
         <br>
 
@@ -45,17 +45,19 @@
         <br>
 
         <label for = "publisher"> Publisher: </label>
-        <input type = "text" id = "publisher">
+        <input type = "text" id = "publisher" name = "publisher">
         <br>
         <br>
 
         <label for = "beaten"> Beaten? </label>
-        <input type = "checkbox" id = "beaten">
+        <input type = "hidden" name="beaten" value="no" />
+        <input type = "checkbox" id = "beaten" name = "beaten" value = "yes">
+
         <br>
         <br>
 
         <label for = "purchasedDate"> Date Bought: </label>
-        <input type = "date" id = "purchasedDate">
+        <input type = "date" id = "purchasedDate" name = "purchasedDate">
 
         <br>
         <br>

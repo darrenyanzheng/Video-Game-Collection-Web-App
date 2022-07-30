@@ -9,11 +9,29 @@ import java.io.IOException;
 public class addGamesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("deez get request was made");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("a post request was made");
+        String name = request.getParameter("name");
+        String platform = request.getParameter("platform");
+        String publisher = request.getParameter("publisher");
+        String beaten = request.getParameter("beaten");
 
+        String date = request.getParameter("purchasedDate");
+
+
+
+        try {
+            videoGame videoGame = new videoGame(name, platform, publisher, beaten, date);
+            System.out.println(videoGame);
+            MyJDBC myJDBC = new MyJDBC();
+            myJDBC.insert(videoGame);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
