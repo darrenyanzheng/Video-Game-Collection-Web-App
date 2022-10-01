@@ -12,6 +12,10 @@
     <button> Add Game </button>
 </a>
 
+<a href = "viewcollection.jsp">
+    <button> View Collection </button>
+</a>
+
 
 <a href="hello-servlet">Hello Servlet</a>
 </body>
