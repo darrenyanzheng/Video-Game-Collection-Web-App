@@ -5,10 +5,10 @@ import java.util.List;
 
 
 public class CrudOperations {
-    private String databaseUrl = "jdbc:mysql://localhost:3306/jdbc";
-    private String databaseUsername = "root";
-    private String databasePassword = "yAYEEtgus510";
-    private String dbDriver = "com.mysql.cj.jdbc.Driver";
+    private final String databaseUrl;
+    private final String databaseUsername;
+    private final String databasePassword;
+    private final String dbDriver;
     private Connection connection;
 
     public CrudOperations(String databaseUrl, String databaseUsername, String databasePassword, String dbDriver) {
@@ -42,7 +42,7 @@ public class CrudOperations {
         Connection connection = null;
         try {
 
-            connection = DriverManager.getConnection(databaseUrl, databaseUsername, databasePassword);
+            connection = DriverManager.getConnection(this.databaseUrl, this.databaseUsername, this.databasePassword);
 
         } catch (SQLException e) {
 
@@ -53,7 +53,7 @@ public class CrudOperations {
         return connection;
     }
 
-    public String insert(videoGame videoGame) throws SQLException {
+    public boolean insert(videoGame videoGame) throws SQLException {
 
         loadDriver(dbDriver);
         Connection connection = this.getConnection();
@@ -62,8 +62,8 @@ public class CrudOperations {
         PreparedStatement preparedStatement = connection.prepareStatement(sqlAdd);
         preparedStatement.setString(1, null);
         preparedStatement.setString(2, videoGame.getName());
-        preparedStatement.setString(3, videoGame.getPublisher());
-        preparedStatement.setString(4, videoGame.getPlatform());
+        preparedStatement.setString(3, videoGame.getPlatform());
+        preparedStatement.setString(4, videoGame.getPublisher());
         preparedStatement.setString(5, videoGame.getBeaten());
         preparedStatement.setString(6, videoGame.getDateBought());
 
@@ -71,23 +71,20 @@ public class CrudOperations {
         preparedStatement.close();
         this.disconnect();
 
-        if (rowsAffected) {
-            return "Insert successful.";
-        }
+        return rowsAffected;
 
-        return "Insert failed.";
     }
 
-    public String updateGame(videoGame videoGame) throws SQLException {
+    public boolean updateGame(videoGame videoGame) throws SQLException {
 
         loadDriver(dbDriver);
         Connection connection = this.getConnection();
-        String sqlUpdate = "update games set name = ?, publisher = ?, platform = ?, beaten = ?, dateBought = ? where id = ?";
+        String sqlUpdate = "update games set name = ?, platform = ?, publisher = ?, beaten = ?, dateBought = ? where id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sqlUpdate);
 
         preparedStatement.setString(1, videoGame.getName());
-        preparedStatement.setString(2, videoGame.getPublisher());
-        preparedStatement.setString(3, videoGame.getPlatform());
+        preparedStatement.setString(2, videoGame.getPlatform());
+        preparedStatement.setString(3, videoGame.getPublisher());
         preparedStatement.setString(4, videoGame.getBeaten());
         preparedStatement.setString(5, videoGame.getDateBought());
         preparedStatement.setInt(6, videoGame.getId());
@@ -96,14 +93,11 @@ public class CrudOperations {
         preparedStatement.close();
         this.disconnect();
 
-        if (rowsAffected) {
-            return "Update success.";
-        }
+        return rowsAffected;
 
-        return "Update failure.";
     }
 
-    public String deleteGame(int videoGameId) throws SQLException {
+    public boolean deleteGame(int videoGameId) throws SQLException {
 
         loadDriver(dbDriver);
         Connection connection = this.getConnection();
@@ -116,11 +110,8 @@ public class CrudOperations {
         preparedStatement.close();
         this.disconnect();
 
-        if (rowsAffected) {
-            return "Delete success.";
-        }
+        return rowsAffected;
 
-        return "Delete failure.";
     }
 
     public List<videoGame> listOfGames() throws SQLException {
@@ -133,13 +124,13 @@ public class CrudOperations {
 
         while (resultSet.next()) {
 
-            int id = resultSet.getInt(0);
-            String name = resultSet.getString(1);
-            String publisher = resultSet.getString(2);
+            int id = resultSet.getInt(1);
+            String name = resultSet.getString(2);
             String platform = resultSet.getString(3);
-            String beaten = resultSet.getString(4);
-            String dateBought = resultSet.getString(5);
-            videoGame videoGame = new videoGame(id, name, publisher, platform, beaten, dateBought);
+            String publisher = resultSet.getString(4);
+            String beaten = resultSet.getString(5);
+            String dateBought = resultSet.getString(6);
+            videoGame videoGame = new videoGame(id, name, platform, publisher, beaten, dateBought);
             gameList.add(videoGame);
 
         }

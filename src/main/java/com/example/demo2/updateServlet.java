@@ -5,19 +5,20 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
-@WebServlet(name = "addServlet", urlPatterns = "/addServlet")
-public class addServlet extends HttpServlet {
+@WebServlet(name = "updateServlet", value = "/updateServlet")
+public class updateServlet extends HttpServlet {
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         try {
-            addGame(request, response);
+            updateGame(request, response);
         }
 
         catch (SQLException e) {
@@ -26,23 +27,19 @@ public class addServlet extends HttpServlet {
 
     }
 
-    private void addGame(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+    private void updateGame(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 
+        String id = (request.getParameter("videoGame_id"));
+        int videoGameid = Integer.parseInt(id);
         String name = request.getParameter("name");
         String platform = request.getParameter("platform");
         String publisher = request.getParameter("publisher");
         String beaten = request.getParameter("beaten");
         String date = request.getParameter("purchasedDate");
 
-        videoGame videoGame = new videoGame(name, platform, publisher, beaten, date);
+        videoGame videoGame = new videoGame(videoGameid, name, platform, publisher, beaten, date);
         CrudOperations crudOperations = new CrudOperations("jdbc:mysql://localhost:3306/jdbc", "root", "yAYEEtgus510", "com.mysql.cj.jdbc.Driver");
-
-        crudOperations.insert(videoGame);
+        crudOperations.updateGame(videoGame);
         response.sendRedirect("listServlet");
-
-
     }
-
-
-
 }
