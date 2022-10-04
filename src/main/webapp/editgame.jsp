@@ -58,9 +58,10 @@
         <br>
         <br>
 
-        <label for = "beaten"> Beaten? </label>
-        <input type = "hidden" name="beaten" value="no" />
-        <input type = "checkbox" id = "beaten" required name = "beaten" value = "yes">
+        <label for = "yesBeaten"> Beaten </label>
+        <input type = "radio" id = "yesBeaten" name = "beaten" value = "yes">
+        <label for = "noBeaten"> Not beaten </label>
+        <input type = "radio" id = "noBeaten" name = "beaten" value = "no" checked>
 
         <br>
         <br>
