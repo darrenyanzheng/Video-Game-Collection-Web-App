@@ -36,6 +36,7 @@
             <option value = "ngc"> Nintendo Gamecube </option>
             <option value = "nswitch"> Nintendo Switch </option>
             <option value = "nwii"> Nintendo Wii </option>
+            <option value = pc> PC </option>
             <option value = "ps1"> Playstation 1 </option>
             <option value = "ps2"> Playstation 2 </option>
             <option value = "ps3"> Playstation 3 </option>
@@ -46,6 +47,7 @@
             <option value = "xbox"> Xbox </option>
             <option value = "x360"> Xbox 360 </option>
             <option value = "xbone"> Xbox One </option>
+
 
         </select>
         <br>
