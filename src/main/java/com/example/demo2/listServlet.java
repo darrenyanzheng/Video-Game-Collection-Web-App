@@ -21,7 +21,7 @@ public class listServlet extends HttpServlet {
     }
 
     private void listOfGames(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        CrudOperations crudOperations = new CrudOperations("jdbc:mysql://localhost:3306/jdbc", "root", "yAYEEtgus510", "com.mysql.cj.jdbc.Driver");
+        CrudOperations crudOperations = new CrudOperations("jdbc:mysql://localhost:3306/games", "root", "password", "com.mysql.cj.jdbc.Driver");
         List<videoGame> listOfGames = crudOperations.listOfGames();
         request.setAttribute("listOfGames", listOfGames);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("viewcollection.jsp");

@@ -35,7 +35,7 @@ public class addServlet extends HttpServlet {
         String date = request.getParameter("purchasedDate");
 
         videoGame videoGame = new videoGame(name, platform, publisher, beaten, date);
-        CrudOperations crudOperations = new CrudOperations("jdbc:mysql://localhost:3306/jdbc", "root", "yAYEEtgus510", "com.mysql.cj.jdbc.Driver");
+        CrudOperations crudOperations = new CrudOperations("jdbc:mysql://localhost:3306/games", "root", "password", "com.mysql.cj.jdbc.Driver");
 
         crudOperations.insert(videoGame);
         response.sendRedirect("listServlet");

@@ -2,6 +2,8 @@ package com.example.demo2;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 
 public class CrudOperations {
@@ -42,7 +44,7 @@ public class CrudOperations {
         Connection connection = null;
         try {
 
-            connection = DriverManager.getConnection(this.databaseUrl, this.databaseUsername, this.databasePassword);
+            connection = java.sql.DriverManager.getConnection(this.databaseUrl, this.databaseUsername, this.databasePassword);
 
         } catch (SQLException e) {
 

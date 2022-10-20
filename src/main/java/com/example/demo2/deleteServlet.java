@@ -28,7 +28,7 @@ public class deleteServlet extends HttpServlet {
     private void deleteGame(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 
         int id = Integer.parseInt(request.getParameter("videoGame_id"));
-        CrudOperations crudOperations = new CrudOperations("jdbc:mysql://localhost:3306/jdbc", "root", "yAYEEtgus510", "com.mysql.cj.jdbc.Driver");
+        CrudOperations crudOperations = new CrudOperations("jdbc:mysql://localhost:3306/games", "root", "password", "com.mysql.cj.jdbc.Driver");
         crudOperations.deleteGame(id);
         response.sendRedirect("listServlet");
     }
