@@ -1,4 +1,4 @@
-#Video Game Collection Web App
+# Video Game Collection Web App
 This is a dynamic web application built using Java. It uses MVC (Model, View, Controller) architecture which works to 
 divide the application in three different, interconnected pieces as the view represents the interface for the user,
 the model the abstract piece of data that is represented (a VideoGame), and the controller that serves to interpret
