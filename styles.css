@@ -1,0 +1,54 @@
+body {
+    background: -webkit-linear-gradient(360deg, #01a99c 10%, #0698b1 360%);
+    font-family: Montserrat;
+}
+
+.intro {
+    width: 320px;
+    padding: 10px;
+    border: 2px ;
+    margin: 0;
+}
+
+.technologies {
+    width: 320px;
+    padding: 10px;
+    border: 2px;
+    margin: 0;
+    position:absolute; left:500px
+}
+
+.dependencies {
+    width: 320px;
+    padding: 10px;
+    border: 2px ;
+    margin: 0;
+}
+
+.buttonAdd {
+    background-color: #008CBA;
+    border: 1px solid;
+    color: white;
+    padding: 8px 17px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0;
+
+}
+
+.buttonList {
+    background-color: #008CBA;
+    border: 1px solid;
+    color: white;
+    padding: 8px 17px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0;
+    position:absolute; left:200px;
+}

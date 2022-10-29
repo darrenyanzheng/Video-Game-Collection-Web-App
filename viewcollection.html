@@ -1,0 +1,60 @@
+
+
+<html>
+<head>
+    <title>My Collection</title>
+    <link href="viewcollection.css" rel="stylesheet" >
+    <link href="http://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+    <div class = "addButton">
+        <a href = "addgame.html"> Add New Game </a>
+    </div>
+</head>
+<body>
+    <table class = "dataTable">
+        <thead>
+            <tr>
+                <th>ID:</th>
+                <th>Name:</th>
+                <th>Platform:</th>
+                <th>Publisher:</th>
+                <th>Beaten:</th>
+                <th>Date Bought:</th>
+                <th>Modify: </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Use JSTL tags to access the videoGame, which is a member of the listOfGames that was passed via the
+            Servlet -->
+            <c:forEach var = "videoGame" items="${listOfGames}" >
+                <tr>
+                    <td>
+                         1 <td>
+                         Minecraft <td>
+                        PC <td>
+                        Mojang   <td>
+                         Yes  <td>
+                         10/20/2022  <td>
+                            <!-- Here, the parameter of the id is passed to the .jsp page so that when the user hits
+                            the button to update, the database knows which entry -->
+                            <a href = "editgame.jsp?videoGame_id=${videoGame.id}" ><button class = "buttonEdit">Edit</button></a>
+                        <br>
+                        <br>
+
+                        <div id="deletebuttons">
+                            <form method = post action = deleteServlet>
+                                <input type="hidden" name="videoGame_id" />
+                                <input type="submit" value="Delete" class = "buttonDelete">
+                            </form>
+                        </div>
+
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+
+
+
+    </table>
+
+</body>
+</html>
